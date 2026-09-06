@@ -11,33 +11,50 @@ include __DIR__ . '/includes/header.php';
 
     <section
         class="hero"
-        style="background-image:
-            linear-gradient(
-                rgba(36, 28, 26, 0.62),
-                rgba(36, 28, 26, 0.62)
-            ),
-            url('<?php echo htmlspecialchars($siteConfig['hero_image']); ?>');"
+        style="
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(20, 15, 14, 0.88) 0%,
+                    rgba(20, 15, 14, 0.66) 42%,
+                    rgba(20, 15, 14, 0.24) 72%,
+                    rgba(20, 15, 14, 0.10) 100%
+                ),
+                url('<?php echo htmlspecialchars($siteConfig['hero_image']); ?>');
+        "
     >
 
-        <div class="hero-content">
+        <div class="hero-inner">
 
-            <h1>
-                <?php echo htmlspecialchars($siteConfig['hero_heading']); ?>
-            </h1>
+            <div class="hero-content">
 
-            <p>
-                <?php echo htmlspecialchars($siteConfig['hero_text']); ?>
-            </p>
+                <p class="hero-kicker">
+                    Reno Neighborhood Lounge
+                </p>
 
-            <div class="hero-actions">
+                <h1>
+                    <?php echo htmlspecialchars($siteConfig['business_name']); ?>
+                </h1>
 
-                <a href="/events.php" class="button">
-                    View Events
-                </a>
+                <h2>
+                    <?php echo htmlspecialchars($siteConfig['hero_heading']); ?>
+                </h2>
 
-                <a href="/connect.php" class="button button-secondary">
-                    Connect With Us
-                </a>
+                <p class="hero-description">
+                    <?php echo htmlspecialchars($siteConfig['hero_text']); ?>
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="/events.php" class="button">
+                        View Events
+                    </a>
+
+                    <a href="/connect.php" class="button button-secondary">
+                        Connect With Us
+                    </a>
+
+                </div>
 
             </div>
 
