@@ -1,3 +1,4 @@
+
 <?php
 
 require_once __DIR__ . '/../config/site.php';
@@ -22,7 +23,7 @@ $fullPageTitle =
 
     <title><?php echo htmlspecialchars($fullPageTitle); ?></title>
 
-    <link rel="stylesheet" href="/../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -31,19 +32,20 @@ $fullPageTitle =
 
     <div class="header-container">
 
-        <a class="site-logo" href="index.php">
+        <a class="site-logo" href="/">
             <?php echo htmlspecialchars($siteConfig['business_name']); ?>
         </a>
 
         <nav class="site-nav" aria-label="Main navigation">
 
-            <a href="index.php">Home</a>
-            <a href="events.php">Events</a>
-            <a href="about.php">About</a>
-            <a href="connect.php">Connect</a>
+            <a href="/">Home</a>
+            <a href="/events.php">Events</a>
+            <a href="/about.php">About</a>
+            <a href="/connect.php">Connect</a>
 
         </nav>
 
     </div>
 
 </header>
+
