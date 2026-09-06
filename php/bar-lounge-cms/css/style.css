@@ -1,16 +1,16 @@
 :root {
-    --color-bg: #f3eadf;
-    --color-surface: #ffffff;
+    --color-bg: #171211;
+    --color-surface: #211918;
     --color-primary: #5b2636;
     --color-secondary: #356e6d;
     --color-accent: #b8774b;
-    --color-text: #241c1a;
-    --color-muted: #6f625d;
-    --color-border: #d8c9bd;
+    --color-cream: #f3eadf;
+    --color-text: #f8f1e9;
+    --color-muted: #c9bbb2;
+    --color-border: rgba(255, 255, 255, 0.10);
 
     --max-width: 1200px;
-    --radius: 14px;
-    --shadow: 0 10px 30px rgba(36, 28, 26, 0.08);
+    --radius: 8px;
 }
 
 
@@ -50,9 +50,13 @@ img {
 ------------------------- */
 
 .site-header {
-    background: var(--color-primary);
+    position: relative;
+    z-index: 10;
+
+    background: rgba(23, 18, 17, 0.97);
     color: white;
-    border-bottom: 4px solid var(--color-accent);
+
+    border-bottom: 1px solid var(--color-border);
 }
 
 .header-container {
@@ -69,24 +73,35 @@ img {
 }
 
 .site-logo {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .site-nav {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 26px;
 }
 
 .site-nav a {
+    font-size: 0.88rem;
     font-weight: 600;
-    transition: color 0.2s ease;
+
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    color: rgba(255, 255, 255, 0.86);
+
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
 }
 
 .site-nav a:hover {
-    color: #f0d7c2;
+    color: white;
 }
 
 
@@ -95,17 +110,10 @@ img {
 ------------------------- */
 
 .hero {
-    min-height: 70vh;
+    min-height: calc(100vh - 76px);
 
     display: flex;
     align-items: center;
-
-    padding: 80px 0;
-
-    /*
-     * The actual hero image and dark overlay are
-     * supplied dynamically by index.php.
-     */
 
     background-size: cover;
     background-position: center;
@@ -114,38 +122,78 @@ img {
     color: white;
 }
 
+.hero-inner {
+    width: 100%;
+}
+
 .hero-content {
     width: min(92%, var(--max-width));
     margin: 0 auto;
 
-    max-width: 720px;
+    padding: 90px 0;
+
+    max-width: 1200px;
+}
+
+.hero-content > * {
+    max-width: 620px;
+}
+
+.hero-kicker {
+    margin: 0 0 18px;
+
+    color: #d9b39a;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
 }
 
 .hero h1 {
-    margin: 0 0 18px;
+    margin: 0;
 
-    font-size: clamp(2.7rem, 7vw, 5.4rem);
-    line-height: 1;
+    font-size: clamp(3.6rem, 8vw, 6.8rem);
+
+    line-height: 0.88;
+
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
 
     text-shadow:
-        0 3px 16px rgba(0, 0, 0, 0.35);
+        0 6px 26px rgba(0, 0, 0, 0.35);
 }
 
-.hero p {
+.hero h2 {
+    margin: 18px 0 18px;
+
+    font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+
+    line-height: 1.15;
+
+    font-weight: 500;
+
+    color: #efe2d8;
+}
+
+.hero-description {
     margin: 0 0 30px;
 
-    max-width: 620px;
+    max-width: 530px;
 
-    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.82);
 
-    text-shadow:
-        0 2px 12px rgba(0, 0, 0, 0.3);
+    font-size: 1.05rem;
+
+    line-height: 1.75;
 }
 
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+
+    gap: 12px;
 }
 
 
@@ -154,30 +202,44 @@ img {
 ------------------------- */
 
 .button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    padding: 13px 22px;
+    min-height: 46px;
 
-    border-radius: 999px;
+    padding: 12px 22px;
+
+    border: 1px solid transparent;
+    border-radius: 4px;
 
     background: var(--color-accent);
     color: white;
 
+    font-size: 0.82rem;
     font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 
     transition:
         transform 0.2s ease,
-        opacity 0.2s ease;
+        background 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .button:hover {
     transform: translateY(-2px);
-    opacity: 0.92;
 }
 
 .button-secondary {
-    background: transparent;
-    border: 2px solid white;
+    background: rgba(0, 0, 0, 0.18);
+
+    border-color: rgba(255, 255, 255, 0.65);
+}
+
+.button-secondary:hover {
+    background: rgba(255, 255, 255, 0.10);
 }
 
 
@@ -186,10 +248,12 @@ img {
 ------------------------- */
 
 .site-footer {
-    background: var(--color-text);
+    background: #100c0b;
     color: white;
 
     padding-top: 48px;
+
+    border-top: 1px solid var(--color-border);
 }
 
 .footer-container {
@@ -209,9 +273,14 @@ img {
     margin-top: 0;
 }
 
+.footer-business h2 {
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
 .footer-business p,
 .footer-contact p {
-    color: #d9d0cc;
+    color: var(--color-muted);
 }
 
 .footer-social {
@@ -222,7 +291,7 @@ img {
 }
 
 .footer-social a {
-    color: #f0d7c2;
+    color: #d9b39a;
 }
 
 .footer-social a:hover {
@@ -230,8 +299,7 @@ img {
 }
 
 .footer-bottom {
-    border-top:
-        1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid var(--color-border);
 
     padding: 18px;
 
@@ -241,9 +309,9 @@ img {
 .footer-bottom p {
     margin: 0;
 
-    color: #c8bfbb;
+    color: #978983;
 
-    font-size: 0.9rem;
+    font-size: 0.86rem;
 }
 
 
@@ -254,6 +322,8 @@ img {
 @media (max-width: 760px) {
 
     .header-container {
+        min-height: auto;
+
         flex-direction: column;
         justify-content: center;
 
@@ -261,31 +331,47 @@ img {
     }
 
     .site-nav {
-        gap: 16px;
+        gap: 14px;
 
         flex-wrap: wrap;
         justify-content: center;
     }
 
+    .site-nav a {
+        font-size: 0.76rem;
+    }
+
     .hero {
-        min-height: 68vh;
+        min-height: calc(100vh - 120px);
 
-        padding: 56px 0;
+        background-position: 62% center;
+    }
 
-        background-position: center;
+    .hero-content {
+        padding: 64px 0 72px;
     }
 
     .hero h1 {
-        font-size: clamp(2.5rem, 12vw, 4rem);
+        font-size: clamp(3rem, 15vw, 4.8rem);
     }
 
-    .hero p {
-        font-size: 1.05rem;
+    .hero h2 {
+        font-size: 1.35rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        line-height: 1.65;
     }
 
     .hero-actions {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .button {
+        width: 100%;
+        max-width: 240px;
     }
 
     .footer-container {
