@@ -9,7 +9,15 @@ include __DIR__ . '/includes/header.php';
 
 <main>
 
-    <section class="hero">
+    <section
+        class="hero"
+        style="background-image:
+            linear-gradient(
+                rgba(36, 28, 26, 0.62),
+                rgba(36, 28, 26, 0.62)
+            ),
+            url('<?php echo htmlspecialchars($siteConfig['hero_image']); ?>');"
+    >
 
         <div class="hero-content">
 
@@ -23,11 +31,11 @@ include __DIR__ . '/includes/header.php';
 
             <div class="hero-actions">
 
-                <a href="events.php" class="button">
+                <a href="/events.php" class="button">
                     View Events
                 </a>
 
-                <a href="connect.php" class="button button-secondary">
+                <a href="/connect.php" class="button button-secondary">
                     Connect With Us
                 </a>
 
