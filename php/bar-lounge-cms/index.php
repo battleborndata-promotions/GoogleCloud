@@ -2,8 +2,8 @@
 
 $pageTitle = 'Home';
 
-require_once __DIR__ . '/config/site.php';
-include __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/../config/site.php';
+include __DIR__ . '/../includes/header.php';
 
 ?>
 
@@ -41,6 +41,6 @@ include __DIR__ . '/includes/header.php';
 
 <?php
 
-include __DIR__ . '/includes/footer.php';
+include __DIR__ . '/../includes/footer.php';
 
 ?>
