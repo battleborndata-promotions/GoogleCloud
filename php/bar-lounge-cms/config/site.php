@@ -20,4 +20,7 @@ $siteConfig = [
     'hero_heading' => 'Your Neighborhood Hangout',
 
     'hero_text' => 'Drinks, events, games, and good company in Reno.'
-];
+
+    'hero_image' => '/images/IMG_1362.png',
+    
+    ];
