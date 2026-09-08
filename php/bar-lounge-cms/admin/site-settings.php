@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
 
             foreach ($settingsToUpdate as $key => $value) {
+
                 $stmt->execute([
                     ':value' => $value,
                     ':key' => $key
@@ -70,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -178,6 +180,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 background 0.2s ease;
         }
 
+        .form-group input[type="file"] {
+            cursor: pointer;
+        }
+
         .form-group textarea {
             resize: vertical;
             min-height: 130px;
@@ -249,6 +255,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
     </style>
+
 </head>
 
 <body>
@@ -291,7 +298,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <?php endif; ?>
 
-            <form method="post">
+            <form
+                method="post"
+                enctype="multipart/form-data"
+            >
 
                 <div class="form-group">
 
@@ -360,6 +370,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <p class="form-help">
                         Keep this short and easy to read on mobile.
+                    </p>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="hero_image">
+                        Hero Image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="hero_image"
+                        name="hero_image"
+                        accept="image/jpeg,image/png,image/webp"
+                    >
+
+                    <p class="form-help">
+                        Upload a JPG, PNG, or WebP image for the homepage hero.
                     </p>
 
                 </div>
