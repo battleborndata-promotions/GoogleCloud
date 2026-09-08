@@ -1,16 +1,14 @@
 <?php
 
-$vars = [
-    'DB_NAME',
-    'DB_USER',
-    'DB_PASS',
-    'INSTANCE_CONNECTION_NAME'
-];
+require_once __DIR__ . '/../config/database.php';
 
-foreach ($vars as $var) {
-    $value = getenv($var);
+try {
+    $pdo = getDatabaseConnection();
 
-    echo $var . ': ' . ($value === false || $value === '' ? 'MISSING' : 'SET') . '<br>';
+    echo 'Database connection successful.';
+} catch (Throwable $e) {
+    error_log($e->getMessage());
+
+    http_response_code(500);
+    echo 'Database connection failed.';
 }
-
- 
