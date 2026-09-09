@@ -5,7 +5,7 @@ require_once __DIR__ . '/database.php';
 $siteConfig = [
     'business_name' => 'Vassar Lounge',
     'tagline' => 'Your Neighborhood Hangout',
-    'address' => '1545 Vassar St, Reno, NV 89502',
+    'address' => '123 Main St, Reno, NV 89502',
     'phone' => '',
     'email' => '',
     'instagram_url' => '',
