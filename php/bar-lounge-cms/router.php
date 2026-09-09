@@ -1,20 +1,55 @@
 <?php
 
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$uriPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-if ($path === false) {
+if (!is_string($uriPath)) {
     http_response_code(400);
     exit;
 }
 
-$path = rawurldecode($path);
+// Reject encoded separators and null bytes.
+if (preg_match('/%(?:2f|5c|00)/i', $uriPath)) {
+    http_response_code(400);
+    exit;
+}
 
-// Protect every request under /admin/.
-if ($path === '/admin' || str_starts_with($path, '/admin/')) {
+$path = rawurldecode($uriPath);
+
+// Reject backslashes and null bytes.
+if (str_contains($path, '\\') || str_contains($path, "\0")) {
+    http_response_code(400);
+    exit;
+}
+
+$root = realpath(__DIR__);
+
+if ($root === false) {
+    http_response_code(500);
+    exit;
+}
+
+// Resolve the requested file before serving it.
+$file = realpath($root . $path);
+
+// Only allow files inside the application root.
+if (
+    $file !== false &&
+    $file !== $root &&
+    !str_starts_with($file, $root . DIRECTORY_SEPARATOR)
+) {
+    http_response_code(403);
+    exit;
+}
+
+// Protect the admin URL space.
+$isAdminPath =
+    $path === '/admin' ||
+    str_starts_with($path, '/admin/');
+
+if ($isAdminPath) {
 
     require_once __DIR__ . '/includes/auth.php';
 
-    // These routes must remain accessible without logging in.
     $publicAdminRoutes = [
         '/admin/login.php',
         '/admin/logout.php'
@@ -29,14 +64,12 @@ if ($path === '/admin' || str_starts_with($path, '/admin/')) {
     }
 }
 
-// Preserve PHP's normal static-file and script handling.
-$file = __DIR__ . $path;
-
-if ($path !== '/' && is_file($file)) {
+// Serve existing files through PHP's normal handling.
+if ($file !== false && is_file($file)) {
     return false;
 }
 
-// Preserve the existing homepage behavior.
+// Preserve the homepage.
 if ($path === '/') {
     require __DIR__ . '/index.php';
     return true;
