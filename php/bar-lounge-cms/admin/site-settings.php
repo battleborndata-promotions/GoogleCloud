@@ -567,6 +567,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         View Website
     </a>
 
+       <a
+        href="/admin/logout.php"
+        class="admin-link"
+    >
+        Logout
+    </a>
+
 </div>
 
 </form>
