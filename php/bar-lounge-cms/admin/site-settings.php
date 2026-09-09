@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ]
                 );
 
-                fclose($stream);
+            
 
                 $heroImageUrl =
                     '/media.php?object=' .
