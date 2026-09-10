@@ -46,11 +46,11 @@ include __DIR__ . '/includes/header.php';
 
                 <div class="hero-actions">
 
-                    <a href="/events.php" class="button">
+                    <a href="/" class="button">
                         View Events
                     </a>
 
-                    <a href="/connect.php" class="button button-secondary">
+                    <a href="/" class="button button-secondary">
                         Connect With Us
                     </a>
 
