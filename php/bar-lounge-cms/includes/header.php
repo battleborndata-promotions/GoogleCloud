@@ -39,9 +39,9 @@ $fullPageTitle =
         <nav class="site-nav" aria-label="Main navigation">
 
             <a href="/">Home</a>
-            <a href="/events.php">Events</a>
-            <a href="/about.php">About</a>
-            <a href="/connect.php">Connect</a>
+            <a href="/">Events</a>
+            <a href="/">About</a>
+            <a href="/">Connect</a>
 
         </nav>
 
